@@ -32,15 +32,16 @@ jobs:
             - name: Convert repository name to lowercase
               run: echo "IMAGE_NAME=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
-#            - name: Extract metadata (tags, labels) for Docker
-#              id: meta
-#              uses: docker/metadata-action@v5
-#              with:
-#                images: ghcr.io/${{ env.IMAGE_NAME }}
+            - name: Extract metadata (tags, labels) for Docker
+              id: meta
+              uses: docker/metadata-action@v5
+              with:
+                images: ghcr.io/${{ env.IMAGE_NAME }}
 
             - name: Build and push
               uses: docker/build-push-action@v3
               with:
                   context: .
                   push: true
-                  tags: ghcr.io/${{ env.IMAGE_NAME }}:latest
+                  tags: ${{ steps.meta.outputs.tags }}
+                  provenance: false
