@@ -1,0 +1,16 @@
+.git
+.github
+
+vendor
+node_modules
+
+.env
+.env.testing
+
+storage/logs
+
+Dockerfile
+docker-compose.yml
+docker-compose.prod.yml
+
+README.md
