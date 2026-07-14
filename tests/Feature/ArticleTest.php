@@ -68,3 +68,23 @@ it('creates a new article', function () {
         'description' => 'This is a test article.',
     ]);
 });
+
+it('returns a single article', function () {
+    $user = User::factory()->create();
+    $article = Article::factory()->for($user, 'author')->create();
+
+    Sanctum::actingAs($user);
+    $response = $this->getJson('articles/' . $article->id)->assertOk();
+    $response->assertJsonStructure([
+        'data' => [
+            'id',
+            'title',
+            'slug',
+            'description',
+            'published',
+            'author' => [
+                'name', 'email',
+            ]
+        ]
+    ]);
+});
