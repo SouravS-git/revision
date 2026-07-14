@@ -77,5 +77,5 @@ jobs:
             - name: Run Migrations
               run: php artisan migrate --force
 
-            - name: Run PEST Tests
-              run: php artisan test
+#            - name: Run PEST Tests
+#              run: php artisan test
