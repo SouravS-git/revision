@@ -74,7 +74,7 @@ it('returns a single article', function () {
     $article = Article::factory()->for($user, 'author')->create();
 
     Sanctum::actingAs($user);
-    $response = $this->getJson(route('articles.show'))->assertOk();
+    $response = $this->getJson(route('articles.show', $article))->assertOk();
     $response->assertJsonStructure([
         'data' => [
             'id',
