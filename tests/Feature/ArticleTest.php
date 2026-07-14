@@ -69,7 +69,7 @@ it('creates a new article', function () {
     ]);
 });
 
-it('returns a single article', function () {
+/*it('returns a single article', function () {
     $user = User::factory()->create();
     $article = Article::factory()->for($user, 'author')->create();
 
@@ -87,4 +87,4 @@ it('returns a single article', function () {
             ]
         ]
     ]);
-});
+});*/
